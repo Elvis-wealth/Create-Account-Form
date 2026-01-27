@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="form" class="card" novalidate>
+      <h1>Create account</h1>
+
+      <div class="input-group">
+        <label for="fullname">Fullname</label>
+        <input
+          id="fullname"
+          type="text"
+          name="fullname"
+          placeholder="e.g. John Doe"
+        />
+        <p class="error" id="nameError"></p>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="text"
+          name="email"
+          placeholder="e.g. john@email.com"
+        />
+        <p class="error" id="emailError"></p>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Create a password"
+        />
+
+        <div class="password-requirements" id="password-reqs">
+          <div class="req-item" id="length">8+ characters</div>
+          <div class="req-item" id="uppercase">Uppercase</div>
+          <div class="req-item" id="lowercase">Lowercase</div>
+          <div class="req-item" id="number">Number</div>
+        </div>
+      </div>
+
+      <button id="btn" type="submit" disabled>Create account</button>
+      <p class="formMsg" id="formMsg"></p>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>

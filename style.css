@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+:root {
+  /* Color Variables */
+
+  --bgColor: #050407;
+  --headlineColor: #f9faf7;
+  --textColor: #b3b2b9;
+  --buttonColor: #7462dc;
+  --onbuttonColour: #fff;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --input-bg: rgba(15, 23, 42, 0.6);
+  --error: #ef4444;
+  --success: #10b981;
+  --focus-ring: rgba(99, 102, 241, 0.5);
+
+  --font-family: "Outfit", sans-serif;
+  --transition: all 0.3s ease;
+  /* Typography Variables */
+  --fontSize-small: 0.875rem;
+  --fontSize-medium: 1rem;
+  --fontSize-large: 1.25rem;
+  --fontSize-xl: 1.5rem;
+
+  --lineHeight-medium: 24px;
+
+  --letterSpacing-small: -1px;
+  --letterSpacing-medium: -0.5px;
+  --letterSpacing-normal: 0.85px;
+
+  --fontWeight-medium: 500;
+  --fontWeight-semibold: 600;
+  --fontWeight-bold: 700;
+
+  /* Spacing */
+
+  --spacing1: 0.25rem;
+  --spacing2: 0.5rem;
+  --spacing3: 1rem;
+  --spacing4: 1.25rem;
+  --spacing5: 1.5rem;
+  --spacing6: 2rem;
+
+  /* Clamp Variables */
+
+  --minimumSize: 1.25rem;
+  --maximumSize: 3rem;
+  --clampVariable: clamp(var(--minimumSize), 1vw + 1rem, var(--maximumSize));
+}
+body {
+  background-color: var(--bgColor);
+  color: var(--headlineColor);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+}
+
+.card {
+  width: min(420px, 100%);
+  background: #111a2e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.input-group {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bgColor);
+  color: var(--text-main);
+  outline: none;
+}
+input:focus {
+  border: 1px solid var(--buttonColor);
+}
+input.valid {
+  border-color: var(--success);
+}
+
+input.invalid {
+  border-color: var(--error);
+}
+
+.error {
+  margin: 4px 0 0;
+  min-height: 18px;
+  font-size: 12px;
+  color: #ff6b6b;
+}
+.password-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.req-item {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #64748b;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.req-item.valid {
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.151);
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--buttonColor);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.formMsg {
+  margin-top: 10px;
+  min-height: 18px;
+  font-size: 12px;
+  opacity: 0.85;
+}
