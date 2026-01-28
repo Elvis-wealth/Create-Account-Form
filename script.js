@@ -1,4 +1,4 @@
-const form = document.getElementById(`signup-form`);
+const form = document.getElementById(`form`);
 const fullname = document.getElementById(`fullname`);
 const nameError = document.getElementById(`nameError`);
 const email = document.getElementById(`email`);
@@ -10,7 +10,13 @@ const pLowerCase = document.getElementById(`lowercase`);
 const pNumber = document.getElementById(`number`);
 const pSpecial = document.getElementById(`special`);
 const pError = document.getElementById(`msg-password`);
-const button = document.getElementById(`submit-btn`);
+const button = document.getElementById(`btn`);
+
+const validationState = {
+  fullname: false,
+  email: false,
+  password: false,
+};
 
 // Helper functions - work with STRINGS (no .value here)
 function hasTwoWords(text) {
@@ -42,6 +48,7 @@ function checkFullName(fullname) {
     // Pass the STRING
     nameError.textContent = "Enter a Valid Fullname";
     fullname.className = "input invalid";
+    validationState.fullname = false;
     return false;
   }
 
@@ -52,16 +59,19 @@ function checkFullName(fullname) {
   ) {
     nameError.textContent = "Each name must be at least 3 characters";
     fullname.className = "input invalid";
+    validationState.fullname = false;
     return false;
   }
 
   nameError.textContent = "";
   fullname.className = "input valid";
+  validationState.fullname = true;
   return true;
 }
 
 fullname.addEventListener("input", function () {
   checkFullName(fullname);
+  updateButton();
 });
 
 // email Helpers
@@ -98,20 +108,24 @@ function checkEmail(email) {
   if (validEmail(emailValue) === false) {
     emailError.textContent = "Enter a Valid Email Address";
     email.className = "input invalid";
+    validationState.email = false;
     return false;
   }
   if (blockedList(emailValue)) {
     emailError.textContent = "This Email Address is not Supported";
     email.className = "input invalid";
+    validationState.email = false;
     return false;
   }
 
   emailError.textContent = "";
   email.className = "input valid";
+  validationState.email = true;
   return true;
 }
 email.addEventListener("input", function () {
   checkEmail(email);
+  updateButton();
 });
 
 // Password Helpers
@@ -156,28 +170,48 @@ function hasNumber(text) {
 // password validation
 function checkPassword(password) {
   const passwordValue = password.value;
+  let allValid = true;
   if (eightChar(passwordValue)) {
     pLength.className = "req-item valid";
   } else {
     pLength.className = "req-item";
+    allValid = false;
   }
   if (hasUpperCase(passwordValue)) {
     pUpperCase.className = "req-item valid";
   } else {
     pUpperCase.className = "req-item";
+    allValid = false;
   }
   if (hasLowerCase(passwordValue)) {
     pLowerCase.className = "req-item valid";
   } else {
     pLowerCase.className = "req-item";
+    allValid = false;
   }
   if (hasNumber(passwordValue)) {
     pNumber.className = "req-item valid";
   } else {
     pNumber.className = "req-item";
+    allValid = false;
   }
+  validationState.password = allValid;
+  return allValid;
 }
 
 password.addEventListener("input", function () {
   checkPassword(password);
+  updateButton();
 });
+
+function updateButton() {
+  if (
+    validationState.fullname &&
+    validationState.email &&
+    validationState.password
+  ) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+}
